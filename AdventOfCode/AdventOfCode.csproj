@@ -11,13 +11,9 @@
       <None Update="Day01\Input.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="2022\Day01\Input.txt">
+      <None Update="2022\Day01_Input.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="2022" />
     </ItemGroup>
 
 </Project>
