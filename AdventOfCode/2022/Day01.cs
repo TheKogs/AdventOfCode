@@ -8,7 +8,8 @@ public static class Day01
             .Trim()
             .Split($"{Environment.NewLine}{Environment.NewLine}") 
             .Select(elvesCalories =>
-                elvesCalories.Split(Environment.NewLine)
+                elvesCalories
+                    .Split(Environment.NewLine)
                     .Sum(int.Parse))
             .OrderByDescending(x => x)
             .ToList();

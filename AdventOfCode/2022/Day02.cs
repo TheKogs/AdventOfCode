@@ -8,8 +8,6 @@ public static class Extensions {
 }
 public static class Day02
 {
-	// Result Part 1: 8933
-	// Result Part 2: 11998
 	private enum HandSign
 	{
 		Rock,
@@ -19,7 +17,7 @@ public static class Day02
 
 	private enum Result
 	{
-		Loose,
+		Lose,
 		Draw,
 		Win
 	};
@@ -60,9 +58,9 @@ public static class Day02
 	private static HandSign CalcMove(HandSign handSign, Result expectedResult) =>
 		(handSign, expectedResult) switch
 		{
-			(HandSign.Rock, Result.Draw) or (HandSign.Paper, Result.Loose) or (HandSign.Scissor, Result.Win) => HandSign.Rock,
-			(HandSign.Rock, Result.Loose) or (HandSign.Paper, Result.Win) or (HandSign.Scissor, Result.Draw) => HandSign.Scissor,
-			(HandSign.Rock, Result.Win) or (HandSign.Paper, Result.Draw) or (HandSign.Scissor, Result.Loose) => HandSign.Paper,
+			(HandSign.Rock, Result.Draw) or (HandSign.Paper, Result.Lose) or (HandSign.Scissor, Result.Win) => HandSign.Rock,
+			(HandSign.Rock, Result.Lose) or (HandSign.Paper, Result.Win) or (HandSign.Scissor, Result.Draw) => HandSign.Scissor,
+			(HandSign.Rock, Result.Win) or (HandSign.Paper, Result.Draw) or (HandSign.Scissor, Result.Lose) => HandSign.Paper,
 			_ => HandSign.Paper		// default should never be reached
 		};
 
@@ -71,10 +69,9 @@ public static class Day02
 	private static int HandResultScore(HandSign opponent, HandSign myself) =>
 		(myself, opponent) switch
 		{
-			// 0 loose, 3 draw, 6 win
 			(HandSign.Rock, HandSign.Scissor) or (HandSign.Paper, HandSign.Rock) or (HandSign.Scissor, HandSign.Paper) => 6,	// win
 			(HandSign.Rock, HandSign.Rock) or (HandSign.Paper, HandSign.Paper) or (HandSign.Scissor, HandSign.Scissor) => 3,	// draw
-			(HandSign.Rock, HandSign.Paper) or (HandSign.Paper, HandSign.Scissor) or (HandSign.Scissor, HandSign.Rock) => 0,	// loose
+			(HandSign.Rock, HandSign.Paper) or (HandSign.Paper, HandSign.Scissor) or (HandSign.Scissor, HandSign.Rock) => 0,	// lose
 			_ => 0
 		};
 
@@ -97,7 +94,7 @@ public static class Day02
 	private static Result ToExpectedResult(string expectedResult) =>
 		expectedResult switch
 		{
-			"X" => Result.Loose,
+			"X" => Result.Lose,
 			"Y" => Result.Draw,
 			_ => Result.Win
 		};
