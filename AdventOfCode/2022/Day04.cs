@@ -8,16 +8,16 @@ public static class Day04
 			.Trim()
 			.Split(Environment.NewLine)
 			.Select(line => line.Split(',', '-').Select(int.Parse).ToList())
-			.Select(s => (Enumerable.Range(s[0], s[1] - s[0] + 1), Enumerable.Range(s[2], s[3] - s[2] + 1)))
+			.Select(s => (Elv1Sections: Enumerable.Range(s[0], s[1] - s[0] + 1), Elv2Sections: Enumerable.Range(s[2], s[3] - s[2] + 1)))
 			.ToList();
 
 		var fullOverlap = sections 
-			.Select(s => (s.Item1.Intersect(s.Item2).Count(), s.Item1.Count(), s.Item2.Count()))
-			.Select(s => s.Item1 == s.Item2 || s.Item1 == s.Item3 ? 1 : 0)
+			.Select(s => (IntersectCount: s.Elv1Sections.Intersect(s.Elv2Sections).Count(), Elv1Count: s.Item1.Count(), Elv2Count: s.Item2.Count()))
+			.Select(s => s.IntersectCount == s.Elv1Count || s.IntersectCount == s.Elv2Count ? 1 : 0)
 			.Sum();
 		
 		var partialOverlap = sections
-			.Select(s=> s.Item1.Intersect(s.Item2).Any() ? 1 : 0)
+			.Select(s=> s.Elv1Sections.Intersect(s.Elv2Sections).Any() ? 1 : 0)
 			.Sum();
 		
 		Console.WriteLine("Day04");
