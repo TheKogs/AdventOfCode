@@ -13,7 +13,7 @@ public static class Day04
 
 		var fullOverlap = sections 
 			.Select(s => (IntersectCount: s.Elv1Sections.Intersect(s.Elv2Sections).Count(), Elv1Count: s.Item1.Count(), Elv2Count: s.Item2.Count()))
-			.Select(s => s.IntersectCount == s.Elv1Count || s.IntersectCount == s.Elv2Count ? 1 : 0)
+			.Select(s => s.IntersectCount == Math.Min(s.Elv1Count, s.Elv2Count) ? 1 : 0)
 			.Sum();
 		
 		var partialOverlap = sections
