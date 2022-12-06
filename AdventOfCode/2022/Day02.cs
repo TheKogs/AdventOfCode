@@ -61,7 +61,7 @@ public static class Day02
 			(HandSign.Rock, Result.Draw) or (HandSign.Paper, Result.Lose) or (HandSign.Scissor, Result.Win) => HandSign.Rock,
 			(HandSign.Rock, Result.Lose) or (HandSign.Paper, Result.Win) or (HandSign.Scissor, Result.Draw) => HandSign.Scissor,
 			(HandSign.Rock, Result.Win) or (HandSign.Paper, Result.Draw) or (HandSign.Scissor, Result.Lose) => HandSign.Paper,
-			_ => HandSign.Paper		// default should never be reached
+			_ => throw new Exception("Invalid hand sign / expected result")		// default should never be reached
 		};
 
 	private static int CalcTotalScore(HandSign opponent, HandSign myself) => HandSignScore(myself) + HandResultScore(opponent, myself);
@@ -72,7 +72,7 @@ public static class Day02
 			(HandSign.Rock, HandSign.Scissor) or (HandSign.Paper, HandSign.Rock) or (HandSign.Scissor, HandSign.Paper) => 6,	// win
 			(HandSign.Rock, HandSign.Rock) or (HandSign.Paper, HandSign.Paper) or (HandSign.Scissor, HandSign.Scissor) => 3,	// draw
 			(HandSign.Rock, HandSign.Paper) or (HandSign.Paper, HandSign.Scissor) or (HandSign.Scissor, HandSign.Rock) => 0,	// lose
-			_ => 0
+			_ => throw new Exception("Invalid hand signs")
 		};
 
 	private static int HandSignScore(HandSign hand) =>
@@ -80,7 +80,8 @@ public static class Day02
 		{
 			HandSign.Rock => 1,
 			HandSign.Paper => 2,
-			_ => 3
+			HandSign.Scissor => 3,
+			_ => throw new Exception("Invalid hand sign")
 		};
 
 	private static HandSign ToHandSign(string handSign) =>
@@ -88,7 +89,8 @@ public static class Day02
 		{
 			"A" or "X" => HandSign.Rock,
 			"B" or "Y" => HandSign.Paper,
-			_ => HandSign.Scissor
+			"C" or "Z" => HandSign.Scissor,
+			_ => throw new Exception("Invalid hand sign")
 		};
 	
 	private static Result ToExpectedResult(string expectedResult) =>
@@ -96,6 +98,7 @@ public static class Day02
 		{
 			"X" => Result.Lose,
 			"Y" => Result.Draw,
-			_ => Result.Win
+			"Z" => Result.Win,
+			_ => throw new Exception("Invalid expected result")
 		};
 }
