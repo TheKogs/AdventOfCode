@@ -24,31 +24,19 @@ public static class Day02
 
 	public static void Execute(string input)
 	{
-		var allRounds = input
-			.Trim()
-			.Split(Environment.NewLine);
+		var allRounds = input.Trim().Split(Environment.NewLine)
+			.Select(round => round.Trim().Split(" "))
+			.ToList();
 		
 		var totalScorePart1 = allRounds
-			.Select(round =>
-			{
-				var (opponentHand, myHand) = round
-					.Trim()
-					.Split(" ")
-					.Select(ToHandSign)
-					.ToList();
-				return CalcTotalScore(opponentHand, myHand);
-			}).Sum();
+			.Select(round => (Opponent: ToHandSign(round[0]), Me: ToHandSign(round[1])))
+			.Select(round => CalcTotalScore(round.Opponent, round.Me))
+			.Sum();
 		
 		var totalScorePart2 = allRounds
-			.Select(round =>
-			{
-				var (hand, result) = round
-					.Trim()
-					.Split(" "); 
-				return CalcTotalScore(
-					ToHandSign(hand), 
-					CalcMove(ToHandSign(hand), ToExpectedResult(result)));
-			}).Sum();
+			.Select(round => (Hand: ToHandSign(round[0]), Result: ToExpectedResult(round[1])))
+			.Select(round => CalcTotalScore(round.Hand, CalcMove(round.Hand, round.Result)))
+			.Sum();
 
 		Console.WriteLine("Day02");
 		Console.WriteLine($"\tPoints Part 1: {totalScorePart1}");
