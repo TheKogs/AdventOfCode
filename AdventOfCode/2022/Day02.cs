@@ -1,11 +1,5 @@
 ﻿namespace AdventOfCode._2022;
 
-public static class Extensions {
-	public static void Deconstruct<T>(this IList<T> list, out T first, out T second) {
-		first = list.Count > 0 ? list[0] : default(T); // or throw
-		second = list.Count > 1 ? list[1] : default(T); // or throw
-	}
-}
 public static class Day02
 {
 	private enum HandSign
