@@ -1,5 +1,4 @@
-﻿using System.Net;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace AdventOfCode._2022;
 
@@ -82,7 +81,7 @@ public static class Day07
 
     private static void CalcDirectorySizes(Node node)
     {
-        node.Directories.ForEach(CalcDirectorySizes);;
+        node.Directories.ForEach(CalcDirectorySizes);
         node.Size = node.Directories.Sum(x => x.Size) + node.FileSizes;
     }
 }
