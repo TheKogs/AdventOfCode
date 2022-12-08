@@ -14,11 +14,10 @@ public static class Day03
 						.First()))
 			.Sum();
 
-		var index = 0;
 		var stickersPrioritySum = input
 			.Trim()
 			.Split(Environment.NewLine)
-			.GroupBy(x => index++ / 3)
+			.Chunk(3)
 			.Select(group =>
 				GetItemValue(group
 					.Aggregate<IEnumerable<char>>((previous, next) => 
