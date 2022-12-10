@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using AdventOfCode._2022;
+﻿using AdventOfCode._2022;
 
 Console.WriteLine("Hello, AdventOfCode");
 
@@ -10,3 +8,6 @@ Day03.Execute(File.ReadAllText("2022/Day03_Input.txt"));
 Day04.Execute(File.ReadAllText("2022/Day04_Input.txt"));
 Day05.Execute(File.ReadAllText("2022/Day05_Input.txt"));
 Day06.Execute(File.ReadAllText("2022/Day06_Input.txt"));
+Day07.Execute(File.ReadAllText("2022/Day07_Input.txt"));
+Day08.Execute(File.ReadAllText("2022/Day08_Input.txt"));
+Day09.Execute(File.ReadAllText("2022/Day09_Input.txt"));
