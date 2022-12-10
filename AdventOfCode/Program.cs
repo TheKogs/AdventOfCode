@@ -11,3 +11,4 @@ Day06.Execute(File.ReadAllText("2022/Day06_Input.txt"));
 Day07.Execute(File.ReadAllText("2022/Day07_Input.txt"));
 Day08.Execute(File.ReadAllText("2022/Day08_Input.txt"));
 Day09.Execute(File.ReadAllText("2022/Day09_Input.txt"));
+Day10.Execute(File.ReadAllText("2022/Day10_Input.txt"));
