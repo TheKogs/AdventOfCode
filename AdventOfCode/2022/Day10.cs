@@ -34,10 +34,8 @@ public static class Day10
 				}
 			});
 
-		var indices = new[] { 20, 60, 100, 140, 180, 220 };
-		var sumSignalStrength = indices
-			.Select(i => cycles[i-1] * i)
-			.Sum();
+		var interestedSignals = new[] { 20, 60, 100, 140, 180, 220 };
+		var sumSignalStrength = interestedSignals.Sum(i => cycles[i - 1] * i);
 		
 		Console.WriteLine($"Sum of signal strength: {sumSignalStrength}");
 	}
